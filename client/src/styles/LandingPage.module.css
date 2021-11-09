@@ -1,0 +1,19 @@
+.btn {
+	color: rgb(24, 24, 24);
+	background: rgb(255, 196, 0);
+    height: 2rem;
+	width: 5rem;
+	box-shadow: inset 0 0 0 0 rgb(255, 174, 0);
+	transition: all ease 3s;
+    border-radius: 5px;
+    border-style: none;
+    margin-top: 23%;
+}
+.btn:hover {
+	box-shadow: inset -340px 0 0 0 rgb(255, 255, 255);
+}
+body{
+    background-image: url("http://i.stack.imgur.com/gyRml.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

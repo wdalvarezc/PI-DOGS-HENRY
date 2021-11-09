@@ -1,0 +1,29 @@
+
+
+.dogImage{
+    border-radius: 10px;
+    width:250px; height:200px;
+}
+@media (max-width: 560px){
+    .dogImage {  
+        width: 100%;
+        height: auto;
+     }
+  }
+
+  .subTitle{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+    margin: 5px
+}
+
+.temperament{
+    word-spacing: 0.25em;
+    text-align: center;
+    font-size: 0.8rem;
+
+    margin: 5px}
+    
+  

@@ -1,0 +1,80 @@
+.searchBar{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.input {
+  height: 1.5rem;
+    font-size: 10px;
+  }
+  .input::-ms-expand {
+    display: none;
+  }
+  .input option {
+    font-weight:normal;
+  }
+
+  
+  .boton {
+    color: rgb(29, 29, 29);
+    background: rgb(255, 166, 0);
+    width: 150px;
+
+    transition: all ease 1s;
+      border-radius: 5px;
+      border-style: none;
+      font-size: 12px;
+      padding: 0.5rem;
+  }
+  .boton:hover {
+    box-shadow: inset -340px 0 0 0 rgb(206, 206, 206);
+    color: #222;
+  }
+
+  
+
+    @media (max-width: 850px) {
+      .searchBar{
+        margin-left: 10px;
+        margin-right: 10px;
+    } 
+    } 
+
+    @media (max-width: 800px) {
+      .searchBar{
+        margin-left: 5px;
+        margin-right: 5px;
+    } 
+    .input {
+      font-size: 9px;
+      width: 130px; 
+      margin: 5px;
+    }
+
+    .boton{
+      width: 130px;
+      font-size: 10px;
+    }
+    } 
+    
+    
+
+   
+    @media (max-width: 600px){
+      .searchBar{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+      
+      .boton{
+        width: 100px;
+        padding: 5px;
+        font-size: 10px;
+      }
+      .input {
+        font-size: 8px;
+        width: 100px; 
+        margin: 5px;
+      }  
+      
+      }

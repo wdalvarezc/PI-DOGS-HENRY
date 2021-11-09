@@ -1,0 +1,71 @@
+.margin{
+    height: 530px;
+    display: block;
+    margin:auto;
+    width: 800px;
+    margin-top: 20px;
+    border-radius: 15px;   
+}
+
+.title:hover {
+    transform: scale(1.2);
+
+  }
+  
+    .dogImage{
+    display: block;
+text-align: right;
+    opacity: 100%;
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+  }
+
+  .text{
+    width: 300px;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: oblique;
+    padding: 10px;
+  }
+.contenedor{
+  background-color: rgb(255, 196, 0);
+  color: #222;
+  display: flex;
+    justify-content: center;
+    align-items: center;}
+
+ .tamaño{ 
+     display: flex;
+  flex-flow: row;
+  align-items: center;
+justify-content: center;
+}
+
+.peso{ 
+    display: flex;
+ flex-flow: row;
+ align-items: center;
+justify-content: center;
+}
+
+.vida{ 
+    display: flex;
+ flex-flow: row;
+ align-items: center;
+justify-content: center;
+}
+
+.p{
+margin-block-start: unset;
+margin-block-end: unset;
+}
+
+.col{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+   justify-content: center;
+}

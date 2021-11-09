@@ -1,0 +1,32 @@
+.title{
+    text-align: center;
+}
+.subTitle{
+font-weight: bold;
+text-decoration: none;
+text-align: center;
+font-size: 2rem;
+color: #ffffff;}
+
+.navlink{
+    text-decoration: none;
+    color: rgb(247, 247, 247);
+    width: 300px;
+}
+
+.boton{
+    width: 200px;
+    margin: 20px;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: burlywood;
+    border-radius: 6px;
+    border: 2px solid #8d7248;
+  }
+  
+  .boton:hover{
+    color: #3c3d15bb;
+    background-color: #f5e2a4;}
