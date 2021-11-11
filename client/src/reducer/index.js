@@ -30,8 +30,19 @@ function rootReducer(state = initialState, action) {
         action.payload === "All"
           ? allDogs
           : allDogs.filter(
-              (el) =>
-                el.temperament.split(", ").find((e) => e === action.payload)
+              (el) => {
+                console.log(el)
+                if(Array.isArray(el.Temperaments)){
+                  return el.Temperaments.find ((e) =>{ 
+                    console.log(e.name)
+                    return e.name === action.payload})
+                }else{
+                  console.log(el.temperament)
+                  return el.temperament.split(', ').find((e) => e === action.payload)
+                }
+              
+              }
+                
             );
       //console.log("filtro temperamentos",allDogs)
       return {

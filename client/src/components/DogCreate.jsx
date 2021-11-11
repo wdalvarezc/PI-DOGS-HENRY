@@ -6,49 +6,7 @@ import s from '../styles/DogCreate.module.css';
 import imagen from "../g9806.png"
 
 
-function validate(input) {
-    let errors = {};
 
-    if (!input.name) {
-        errors.name = 'Debes llenar este campo';
-    }
-
-    if (!input.height_min || !/^[1-9]\d*(\.\d+)?$/.test(input.height_min)) {
-        errors.height_min = 'El valor Min tiene que ser entero';
-    }
-    if (!input.height_max || !/^[1-9]\d*(\.\d+)?$/.test(input.height_max)) {
-        errors.height_max = 'El valor Max tiene que ser entero';
-    }
-    if (input.height_max < input.height_min) {
-        errors.height_min = 'Min no puede ser Mayor que Max';
-    }
-
-    if (!input.weight_min || !/^[1-9]\d*(\.\d+)?$/.test(input.weight_min)) {
-        errors.weight_min = 'El valor Min tiene que ser numerico no se permite coma';
-    }
-    if (!input.weight_max || !/^[1-9]\d*(\.\d+)?$/.test(input.weight_max)) {
-        errors.weight_max = 'El valor Max tiene que ser numerico no se permite coma';
-    }
-    if (input.weight_max < input.weight_min) {
-        errors.weight_min = 'Min no puede ser Mayor que Max';
-    }
-    if (!input.life_time_min || !/^[1-9]\d*(\.\d+)?$/.test(input.life_time_min)) {
-        errors.life_time_min = 'El valor Min tiene que ser numerico no se permite coma';
-    }
-    if (!input.life_time_max || !/^[1-9]\d*(\.\d+)?$/.test(input.life_time_max)) {
-        errors.life_time_max = 'El valor Max tiene que ser numerico no se permite coma';
-    }
-    if (input.life_time_max < input.life_time_min) {
-        errors.life_time_min = 'Min no puede ser Mayor que Max';
-    }
-    if (input.img && !/[a-z0-9-.]+\.[a-z]{2,4}\/?([^\s<>#%",{}\\|^[\]`]+)?$/.test(input.img)) {
-        errors.img = 'Debe ser una URL o estar vacio para tomar una Imagen por Defecto';
-    }
-    if (input.temperament.length < 1) {
-        errors.temperament = 'Selecciona un temperamento';
-    }
-    return errors
-}
 
 
 
@@ -69,7 +27,64 @@ export default function DogCreate() {
         temperament: [],
         img: "",
     })
+    function validate(input) {
+        let errors = {};
 
+
+        
+        if (!input.name) {
+            errors.name = 'Debes llenar este campo';
+            setErrors(errors)
+        }
+
+        if (!input.height_min || !/^[0-9]\d*(\.\d+)?$/.test(input.height_min)) {
+            errors.height_min = 'El valor Min tiene que ser entero';
+            setErrors(errors)
+        }
+        if (!input.height_max || !/^[0-9]\d*(\.\d+)?$/.test(input.height_max)) {
+            errors.height_max = 'El valor Max tiene que ser entero';
+            setErrors(errors)
+        }
+        if (input.height_max < input.height_min) {
+            errors.height_min = 'Min no puede ser Mayor que Max';
+            setErrors(errors)
+        }
+
+        if (!input.weight_min || !/^[0-9]\d*(\.\d+)?$/.test(input.weight_min)) {
+            errors.weight_min = 'El valor Min tiene que ser numerico no se permite coma';
+            setErrors(errors)
+        }
+        if (!input.weight_max || !/^[0-9]\d*(\.\d+)?$/.test(input.weight_max)) {
+            errors.weight_max = 'El valor Max tiene que ser numerico no se permite coma';
+            setErrors(errors)
+        }
+        if (input.weight_max < input.weight_min) {
+            errors.weight_min = 'Min no puede ser Mayor que Max';
+            setErrors(errors)
+            setErrors(errors)
+        }
+        if (!input.life_time_min || !/^[0-9]\d*(\.\d+)?$/.test(input.life_time_min)) {
+            errors.life_time_min = 'El valor Min tiene que ser numerico no se permite coma';
+            setErrors(errors)
+        }
+        if (!input.life_time_max || !/^[0-9]\d*(\.\d+)?$/.test(input.life_time_max)) {
+            errors.life_time_max = 'El valor Max tiene que ser numerico no se permite coma';
+            setErrors(errors)
+        }
+        if (input.life_time_max < input.life_time_min) {
+            errors.life_time_min = 'Min no puede ser Mayor que Max';
+            setErrors(errors)
+        }
+        if (input.img && !/[a-z0-9-.]+\.[a-z]{2,4}\/?([^\s<>#%",{}\\|^[\]`]+)?$/.test(input.img)) {
+            errors.img = 'Debe ser una URL o estar vacio para tomar una Imagen por Defecto';
+            setErrors(errors)
+        }
+        if (input.temperament.length < 1) {
+            errors.temperament = 'Selecciona un temperamento';
+            setErrors(errors)
+        }
+        return errors
+    }
 
     function handleChange(e) {
 
@@ -77,11 +92,7 @@ export default function DogCreate() {
             ...input,
             [e.target.name]: e.target.value
         })
-        setErrors(validate({
-            ...input,
-            [e.target.name]: e.target.value
 
-        }));
 
         //console.log(input) //muestra el input en el navegador
     }
@@ -102,8 +113,10 @@ export default function DogCreate() {
 
 
     function handleSubmit(e) {
-        e.preventDefault()
         console.log(input)
+        e.preventDefault()
+        validate(input);
+        // console.log(input)
         if (Object.keys(errors).length === 0 && input.name !== "" && input.height_min !== "" && input.height_max !== "" && input.weight_min !== ""
             && input.weight_max !== "" && input.life_time_min !== "" && input.life_time_max !== "" && input.temperament.length !== 0) {
             dispatch(postDogs(input))
@@ -114,7 +127,7 @@ export default function DogCreate() {
             history.push('/home')
         }
         else {
-            alert("los campos con * son Obligarotios!")
+            alert("valida los campos * o corige errores")
 
         }
     }
@@ -127,9 +140,9 @@ export default function DogCreate() {
     return (
         <div>
             <NavLink className={s.navlink} to="/home">
-                    <img src={imagen} alt="" />                
+                <img src={imagen} alt="" />
             </NavLink>
-        <br/><br/>
+            <br /><br />
             <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <label for="name" htmlFor="name">Nombre *</label>
@@ -149,7 +162,7 @@ export default function DogCreate() {
                 </select>
                 <ul className={s.ul}><li className={s.lista}>{input.temperament.map(el => <button className={s.botonTemp} type='button' key={el.id} onClick={() => handleDelete(el)}>{el}</button>)}</li></ul>
                 <div>
-                    <br/>
+                    <br />
                     <label htmlFor="height_min">Tamaño *</label>
                     <br />
                     <input className={s.input} autocomplete="off" type="text" value={input.height_min} name='height_min' id='height_min' placeholder="Min" onChange={(e) => handleChange(e)} />
@@ -161,7 +174,7 @@ export default function DogCreate() {
                     {errors.height_max && (<p className={s.danger} >{errors.height_max}</p>)}
                 </div>
                 <div>
-                <br/>
+                    <br />
                     <label htmlFor="weight_min">Peso *</label>
                     <br />
                     <input className={s.input} autocomplete="off" type="text" value={input.weight_min} name='weight_min' id='weight_min' placeholder="Min" onChange={(e) => handleChange(e)} />
@@ -174,7 +187,7 @@ export default function DogCreate() {
                     {errors.weight_max && (<p className={s.danger} >{errors.weight_max}</p>)}
                 </div>
                 <div>
-                <br/>
+                    <br />
                     <label htmlFor="life_time_min">Tiempo de Vida *</label>
                     <br />
                     <input className={s.input} autocomplete="off" type="text" value={input.life_time_min} name='life_time_min' id='life_time_min' placeholder="Min" onChange={(e) => handleChange(e)} />
@@ -187,14 +200,14 @@ export default function DogCreate() {
                     {errors.life_time_max && (<p className={s.danger} >{errors.life_time_max}</p>)}
                 </div>
                 <div>
-                <br/>
+                    <br />
                     <label htmlFor="img">Imagen:</label>
                     <br />
                     <input type="text" value={input.img} name='img' placeholder="Ingresa la URL de tu Imagen" onChange={(e) => handleChange(e)} />
                     {errors.img && (<p className={s.danger} >{errors.img}</p>)}
                 </div>
                 {input.img ? <img className={s.img} src={input.img} alt="img not found" /> : ""}
-                <br/>
+                <br />
                 <button className={s.boton} type='submit'>Crear</button>
             </form>
         </div>
