@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const axios = require("axios");
 const { Dog, Temperament, Op } = require("../db");
-const e = require("express");
+// const e = require("express");
 const { API_KEY } = process.env;
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -90,9 +90,8 @@ router.get("/dogs", async (req, res) => {
       let dogsName = await dogsTotal.filter((e) =>
         e.name.toLowerCase().includes(name.toLowerCase())
       );
-      dogsName.length // el tamaño de mi arreglo siempre sera 1
-        ? res.status(200).send(dogsName)
-        : res.status(404).send("Lo siento, no se encontro el Perrito Buscado");
+      dogsName.length ? res.status(200).send(dogsName)
+        : res.status(404).send("no se encontro Dog");
     } else {
       res.status(200).send(dogsTotal);
     }
@@ -166,6 +165,7 @@ router.post("/dogs", async (req, res) => {
     });
     await dogCreated.addTemperaments(temperamentDb); // se agrega el await para esperar que se encuentren los temperaments
     res.send("Dog creado con exito");
+    console.log(dogCreated)
   }
   catch(error){
     console.log("Se presento un error en el Post", error)
