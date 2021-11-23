@@ -28,7 +28,6 @@ export default function Home() {
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog)
     const temperaments = useSelector((state) => state.temperaments);
 
-    // const temperaments = useSelector((state)=> state.Temperaments)
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -116,7 +115,7 @@ export default function Home() {
                     >
                         <option value="All">Todos</option>
                         <option value="created">Creados</option>
-                        <option value="api">Existente</option>
+                        <option value="api">Api</option>
                     </select>
                 </div>
 
@@ -152,4 +151,3 @@ export default function Home() {
         </div>
     )
 }
-//temperaments={el.temperament ? el.temperament : el.Temperaments.map(e=>e.name + ", ")

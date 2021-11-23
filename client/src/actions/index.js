@@ -3,17 +3,26 @@ import axios from 'axios';
 const ruta = "http://localhost:3001/";
 export function getDogs() {
     return async function(dispatch) {
-      try {
-        var json = await axios.get(`${ruta}dogs`);
-        console.log(json)
-        return dispatch({
-            type: "GET_DOGS",
-            payload: json.data
-        }) 
-      } catch (error) {
-          console.log(error)
-      }  
-    }
+    axios.get(`${ruta}dogs`)
+    .then((respuesta)=>
+    dispatch({
+        type:"GET_DOGS",
+        payload:respuesta.data
+
+    }))
+    .catch((error)=>console.log(error))
+
+    //   try {
+    //     var json = await axios.get(`${ruta}dogs`);
+    //     console.log(json)
+    //     return dispatch({
+    //         type: "GET_DOGS",
+    //         payload: json.data
+    //     }) 
+    //   } catch (error) {
+    //       console.log(error)
+    //   }  
+ }
     
 }
 
