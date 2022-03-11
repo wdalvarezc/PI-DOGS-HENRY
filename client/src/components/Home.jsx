@@ -1,4 +1,5 @@
 import React from "react";
+import Push from "push.js"
 //importo los hook que voy a usar de react
 import { useState, useEffect } from "react";
 //importo los hooks de react-redux (previamente se instala npm i react-redux)
@@ -36,19 +37,20 @@ export default function Home() {
     useEffect(() => {
         dispatch(getDogs());
         dispatch(getTemperaments())
+        Push.create('hola');
     }, [])
-
-
-
-
+    
+    
+    
+    
     function handleSort(e) {
         e.preventDefault();
         dispatch(orderByName(e.target.value))
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`)
-
+        
     }
-
+    
     function handleSortWeight(e) {
         e.preventDefault();
         dispatch(orderByWeight(e.target.value))
@@ -58,6 +60,7 @@ export default function Home() {
     function handleClick(e) {
         e.preventDefault();
         dispatch(getDogs());
+        Push.create(e.target.value);
     }
     function handleFilterTemperament(e) {
         dispatch(filterDogsByTemperaments(e.target.value));

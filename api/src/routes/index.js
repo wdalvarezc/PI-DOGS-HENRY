@@ -3,10 +3,13 @@ const axios = require("axios");
 const { Dog, Temperament, Op } = require("../db");
 // const e = require("express");
 const { API_KEY } = process.env;
+const prueba = require('./prueba.js');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
+
+router.use('/prueba',prueba);
 
 Array.prototype.unique = (function (a) {
   return function () {
@@ -165,7 +168,7 @@ router.post("/dogs", async (req, res) => {
     });
     await dogCreated.addTemperaments(temperamentDb); // se agrega el await para esperar que se encuentren los temperaments
     res.send("Dog creado con exito");
-    console.log(dogCreated)
+    // console.log(dogCreated);
   }
   catch(error){
     console.log("Se presento un error en el Post", error)
